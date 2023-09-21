@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("produtos")
+@RequestMapping("/produtos")
 public class ProdutoController {
 
     @Autowired
@@ -17,6 +17,7 @@ public class ProdutoController {
 
 
     @GetMapping
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<?> listar() {
 
         var produtos = produtoRepository.findAll();
@@ -33,7 +34,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "http://172.31.48.1")
+    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     public ResponseEntity<?> consultar(@PathVariable Long id) {
 
         Produto produto = getProduto(id);
